@@ -132,10 +132,11 @@
     <a href="{{ url_for('recipes') }}" class="btn primary">Полезные рецепты</a>
 
     {% if session.get('username') %}
-        <p style="margin-top: 15px;">Привет, {{ session['username'] }}! <a href="{{ url_for('logout') }}" style="color: #fff; text-decoration: underline;">Выйти</a></p>
-    {% else %}
-        <p style="margin-top: 15px;"><a href="{{ url_for('register') }}" style="color: #fff; text-decoration: underline;">Зарегистрироваться</a></p>
-    {% endif %}
+<p>Привет, {{ session['username'] }}! <a href="{{ url_for('logout') }}">Выйти</a></p>
+{% else %}
+<p><a href="{{ url_for('register') }}">Зарегистрироваться</a></p>
+{% endif %}
+
 </header>
 
 <section class="advantages">
