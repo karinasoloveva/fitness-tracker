@@ -1,0 +1,177 @@
+/* Основные стили */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(120deg, #f0f4f8, #d9e2ec);
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark {
+    background: #121212;
+    color: #eee;
+}
+
+/* Главная секция - Hero */
+.hero {
+    background: #4CAF50; /* Зеленый */
+    color: white;
+    padding: 80px 40px;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.hero-content {
+    flex: 1 1 50%;
+    padding: 20px;
+}
+
+.hero h1 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 30px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-image-container {
+    flex: 1 1 50%;
+    padding: 20px;
+}
+
+.hero-image {
+    width: 100%;
+    max-width: 600px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Кнопки */
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s ease;
+}
+
+.btn.primary {
+    background-color: #4CAF50; /* Зеленый */
+    color: white;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.btn.primary:hover {
+    background-color: #45a049;
+    transform: translateY(-3px);
+}
+
+.btn.secondary {
+    background-color: #556ee6; /* Синий */
+    color: white;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.btn.secondary:hover {
+    background-color: #4058c4;
+    transform: translateY(-3px);
+}
+
+/* Форма регистрации */
+.registration {
+    background-color: #fff;
+    padding: 40px;
+    max-width: 600px;
+    margin: 0 auto;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.registration h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus {
+    border-color: #4CAF50; /* Зеленый */
+}
+
+.registration form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.registration button {
+    background-color: #556ee6;
+    color: white;
+    padding: 14px 36px;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 30px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 6px 16px rgba(85, 110, 230, 0.5);
+    transition: background-color 0.3s ease;
+}
+
+.registration button:hover {
+    background-color: #4058c4;
+}
+
+/* Дополнительные стили для мобильных устройств */
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+        padding: 40px 20px;
+    }
+    .hero-content,
+    .hero-image-container {
+        flex: 1 1 100%;
+        padding: 10px;
+    }
+    .hero h1 {
+        font-size: 28px;
+    }
+    .hero p {
+        font-size: 16px;
+    }
+}

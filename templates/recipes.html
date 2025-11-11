@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Рецепты и советы для похудения. Поддержите свой здоровый образ жизни.">
+    <meta name="keywords" content="рецепты, похудение, диета, фитнес, здоровый образ жизни">
+    <title>Рецепты</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f7fa;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header.hero {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .btn {
+            background-color: #34a853;
+            padding: 15px 30px;
+            border-radius: 10px;
+            color: white;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: bold;
+            margin: 10px;
+        }
+
+        .recipe-card {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .recipe-card h3 {
+            margin-top: 0;
+            font-size: 24px;
+        }
+
+        .recipe-card p {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .favorite-btn {
+            background-color: #ff6f61;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            border: none;
+            margin-top: 10px;
+        }
+
+        .favorite-btn:hover {
+            background-color: #e55a48;
+        }
+
+        .favorites-btn-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .calories {
+            font-weight: bold;
+        }
+
+        .grams-btns button {
+            margin: 5px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <header class="hero">
+            <h1>Рецепты для похудения</h1>
+            <p>Здесь вы найдёте рецепты с калориями на разное количество грамм!</p>
+            <div class="favorites-btn-container">
+                <a href="{{ url_for('favorites') }}" class="btn">Перейти в избранные рецепты</a>
+            </div>
+        </header>
+
+        <section id="recipes">
+            {% for i in range(1, 51) %}
+                <div class="recipe-card">
+                    <h3>Рецепт {{ i }} (<span class="base-calories">150</span> ккал на 100 г)</h3>
+                    <p><strong>Ингредиенты:</strong> Ингредиенты рецепта {{ i }}</p>
+                    <p><strong>Инструкция:</strong> Инструкция приготовления рецепта {{ i }}</p>
+                    
+                    <div class="grams-btns">
+                        <button onclick="showCalories(this, 100)">100 г</button>
+                        <button onclick="showCalories(this, 200)">200 г</button>
+                        <button onclick="showCalories(this, 500)">500 г</button>
+                        <button onclick="showCalories(this, 1000)">1 кг</button>
+                    </div>
+                    <p class="calories-result"></p>
+
+                    <form action="{{ url_for('add_to_favorites') }}" method="POST">
+                        <input type="hidden" name="recipe_name" value="Рецепт {{ i }}">
+                        <button type="submit" class="favorite-btn">Добавить в избранное</button>
+                    </form>
+                </div>
+            {% endfor %}
+        </section>
+    </div>
+
+    <script>
+        function showCalories(button, grams) {
+            const recipeCard = button.closest('.recipe-card');
+            const baseCalories = parseFloat(recipeCard.querySelector('.base-calories').textContent);
+            const totalCalories = baseCalories * grams / 100;
+            recipeCard.querySelector('.calories-result').textContent = `Калорий: ${totalCalories} ккал`;
+        }
+    </script>
+</body>
+</html>
