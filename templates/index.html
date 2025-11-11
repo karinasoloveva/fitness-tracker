@@ -158,20 +158,15 @@
 </section>
 
 
-<section class="recipes-preview">
+<section class="popular-recipes">
     <h2>Популярные рецепты</h2>
-    <div class="cards">
-        <div class="recipe-card">
-            <img src="https://i.imgur.com/W0yVx1N.jpg" alt="">
-            <p>Овсянка с ягодами</p>
-        </div>
-        <div class="recipe-card">
-            <img src="https://i.imgur.com/V2uVYdN.jpg" alt="">
-            <p>Куриное филе с овощами</p>
-        </div>
-        <div class="recipe-card">
-            <img src="https://i.imgur.com/ncObmaH.jpg" alt="">
-            <p>Творожные панкейки</p>
+    <ul>
+        <li><a href="{{ url_for('recipes') }}#oatmeal">Овсянка с ягодами</a></li>
+        <li><a href="{{ url_for('recipes') }}#chicken">Куриное филе с овощами</a></li>
+        <li><a href="{{ url_for('recipes') }}#pancakes">Творожные панкейки</a></li>
+    </ul>
+</section>
+
         </div>
     </div>
 </section>
